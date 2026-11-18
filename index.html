@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HAMZA FOREX BOT</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#080e19;color:white;font-family:Arial,sans-serif}
+header{padding:22px 16px;background:#101a2b;border-bottom:1px solid #26354b}
+h1{color:#20d6a0;font-size:25px;margin:0}
+header p{color:#91a4bc;font-size:12px}
+main{padding:16px;max-width:650px;margin:auto}
+.card{background:#111d30;border:1px solid #263850;border-radius:14px;padding:18px;margin-bottom:16px}
+h2{font-size:16px;color:#b8c8db}
+select{width:100%;padding:13px;background:#1b2a40;color:white;border:1px solid #40516b;border-radius:8px}
+.status{text-align:center;padding:25px 10px}
+.signal{font-size:27px;font-weight:bold;color:#f3c75b;margin:15px}
+button{padding:13px;border:0;border-radius:8px;font-weight:bold;cursor:pointer;width:100%;margin-top:9px}
+.buy{background:#13b987;color:#061b16}
+.sell{background:#ed5268;color:white}
+.reset{background:#263850;color:white}
+small{color:#91a4bc}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.value{font-size:20px;color:#20d6a0;font-weight:bold;margin-top:8px}
+footer{text-align:center;color:#71839b;padding:20px;font-size:12px}
+</style>
+</head>
+<body>
+<header>
+<h1>HAMZA FOREX BOT</h1>
+<p>PERSONAL FOREX SIGNALS DASHBOARD</p>
+</header>
+
+<main>
+<div class="card">
+<h2>MARKET SETTINGS</h2>
+<select id="pair">
+<option>EURUSD</option>
+<option>GBPUSD</option>
+<option>USDJPY</option>
+<option>USDCHF</option>
+<option>AUDUSD</option>
+<option>USDCAD</option>
+<option>NZDUSD</option>
+</select>
+<br><br>
+<select id="time">
+<option>M5 - 5 Minutes</option>
+<option>M15 - 15 Minutes</option>
+<option>M30 - 30 Minutes</option>
+<option>H1 - 1 Hour</option>
+</select>
+</div>
+
+<div class="card status">
+<h2>TRADING SIGNAL</h2>
+<div class="signal" id="signal">WAITING</div>
+<small id="info">No live market data connected</small>
+</div>
+
+<div class="card">
+<h2>STRATEGY</h2>
+<div class="grid">
+<div>
+<small>FAST EMA</small>
+<div class="value">EMA 9</div>
+</div>
+<div>
+<small>SLOW EMA</small>
+<div class="value">EMA 21</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<h2>TEST YOUR DASHBOARD</h2>
+<button class="buy" onclick="test('BUY')">TEST BUY SIGNAL</button>
+<button class="sell" onclick="test('SELL')">TEST SELL SIGNAL</button>
+<button class="reset" onclick="resetSignal()">RESET</button>
+<small>Test buttons only. These are not real trading signals.</small>
+</div>
+
+<div class="card">
+<h2>BOT INFORMATION</h2>
+<p>Bot name: HAMZA FOREX BOT</p>
+<p>Strategy: EMA 9 / EMA 21</p>
+<p>Mode: Signal only</p>
+<p>Status: Demo version</p>
+</div>
+</main>
+
+<footer>HAMZA FOREX BOT © 2026</footer>
+
+<script>
+function test(type){
+let s=document.getElementById("signal");
+let i=document.getElementById("info");
+s.innerText=type;
+s.style.color=type==="BUY"?"#13d99a":"#ed5268";
+i.innerText="DEMO TEST - "+document.getElementById("pair").value;
+}
+function resetSignal(){
+document.getElementById("signal").innerText="WAITING";
+document.getElementById("signal").style.color="#f3c75b";
+document.getElementById("info").innerText="No live market data connected";
+}
+</script>
+</body>
+</html>
